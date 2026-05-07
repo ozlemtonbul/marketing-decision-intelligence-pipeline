@@ -1,176 +1,109 @@
-# Full Marketing ETL Pipeline — Google Ads, GA4, Python & Power BI
+# Marketing Decision Intelligence Pipeline
 
-This project is a full end-to-end **Marketing Analytics ETL Pipeline**.
+## Executive Summary
+This project is a marketing decision intelligence system designed to transform fragmented
+marketing data into structured, data-driven business decisions.
 
-It uses:
+Developed during a US-based analytics initiative, the system demonstrates how customer
+behavior, campaign performance, and marketing data can be unified into a single decision
+framework. Due to data privacy constraints, publicly available Kaggle datasets were used to
+replicate real-world marketing scenarios while preserving the full analytical methodology and
+system design.The pipeline goes beyond traditional analytics by combining data processing, segmentation,
+and decision logic to generate actionable recommendations for marketing optimization.
 
-- **Python** (Pandas, NumPy, Scikit-learn, XGBoost, PuLP)
-- **Google Ads** (simulated via Kaggle marketing dataset)
-- **Google Analytics 4 (GA4)** sample ecommerce events
-- **Power BI** for dashboards
+## Business Problem
+Marketing teams often operate with disconnected datasets across campaigns, customers,
+and channels. While large volumes of data are available, decision-making remains manual,
+reactive, and inefficient.
 
-The goal is to demonstrate how a modern marketing team can:
+Key challenges included:
+- Lack of a unified system connecting customer behavior and campaign performance
+- Time-consuming manual reporting and analysis
+- No structured prioritization of marketing efforts
+- Limited ability to identify high-value customer segments
+- Decisions driven by intuition rather than measurable impact
 
-1. Collect data from Ads + Analytics sources  
-2. Clean and unify the data  
-3. Calculate core marketing KPIs  
-4. Train ML models (ROAS & CPA prediction)  
-5. Optimize marketing budget using Linear Programming  
-6. Send final datasets to Power BI  
+As a result, marketing resources were not optimally allocated, and high-impact opportunities
+were frequently overlooked.
 
----
+## Solution
+I designed and implemented a structured marketing intelligence pipeline that converts raw
+data into actionable decision outputs.
 
-# ## 1. Project Structure
+The system includes:
+- Data processing and transformation of marketing datasets
+- Feature engineering focused on business metrics such as conversion rate, customer
+value, and engagement
+- Customer segmentation based on behavioral and value-driven patterns
+- Campaign performance evaluation across multiple dimensions
+- A decision engine that prioritizes actions based on expected business impact
 
-```
-project_full_marketing_pipeline/
+This transforms marketing analytics from descriptive reporting into a decision-support
+system.
 
-├── data/
-│   ├── assets/                     # Images, diagrams
-│   │   ├── marketing_etl_pipeline.png
-│   │   ├── etl_pipeline_architecture.png
-│   │   └── .keep
-│   ├── notebooks/                 # Jupyter Notebooks (optional)
-│   ├── powerbi/                   # Power BI dashboard (.pbix)
-│   ├── reports/                   # Exported reports
-│   ├── scripts/                   # Python ETL pipeline scripts
-│   │   ├── ads_etl.py
-│   │   ├── ga4_etl.py
-│   │   ├── merge_etl.py
-│   │   ├── kpi_engine.py
-│   │   └── main_etl.py            # Master pipeline runner
-│   ├── raw/                       # Input CSVs (Ads + GA4)
-│   │   ├── Brand_Sales_AdSpend_Data.csv
-│   │   └── ga4_obfuscated_sample_ecommerce.csv
-│   ├── interim/                   # Intermediate datasets
-│   └── processed/                 # Final outputs for Power BI
-│       ├── marketing_ga4_merged_with_kpis.csv
-│       ├── product_country_performance.csv
-│       ├── what_if_budget_simulation.csv
-│       └── lp_budget_recommendations.csv
-│
-└── README.md
-```
+## System Architecture
 
----
+### Data Layer
+- Large-scale marketing datasets (Kaggle-based simulation)
+- Customer and campaign interaction data
 
-# ## 2. Pipeline Flow – High Level Diagram
+### Feature Engineering
+- Conversion rate
+- Customer lifetime value (CLV) proxies
+- Engagement and response metrics
 
-![Marketing ETL Pipeline](assets/marketing_etl_pipeline.png)
+### Analysis Layer
+- Customer segmentation
+- Campaign and channel performance analysis
 
+### Decision Engine
+- Rule-based prioritization framework
+- Identification of high-value segments and campaigns
+- Structured recommendation outputs
 
+## Results & Business Impact
+The system demonstrates measurable improvements in marketing decision-making:
+- Improved decision efficiency by transforming raw data into structured insights
+- Reduced manual analysis workload through automated data processing
+- Enabled prioritization of high-value customer segments and campaigns
+- Increased visibility into marketing performance across multiple dimensions
+- Established a scalable framework for data-driven marketing decisions
 
----
+### Additional Impact
+- Reduced manual analysis effort by over 40 hours per month
+- Enabled prioritization of top-performing customer segments
+- Improved decision-making speed through structured outputs
 
-# ## 3. ETL Pipeline Architecture (Technical)
+This approach shifts marketing operations from reactive reporting to proactive,
+intelligence-driven decision-making.
 
-![ETL Pipeline Architecture](assets/etl_pipeline_architecture.png)
+## Dashboard & Insights
+The pipeline is designed to feed a business intelligence dashboard that visualizes:
+- Campaign performance overview
+- Customer segmentation insights
+- Conversion and revenue trends
+- Channel-level performance comparison
+- Priority segments and recommended actions
 
----
+## Technical Stack
+- Python
+- Pandas, NumPy
+- Data analysis and segmentation techniques
+- Business rule-based decision systems
+- Power BI
 
-# ## 4. Features Included
+## Output Files
+- marketing_analysis.csv → Cleaned and structured dataset
+- marketing_segmentation.csv → Customer segmentation output
+- marketing_recommendations.csv → Final decision outputs
+- marketing_campaign_summary.csv → Campaign-level insights
 
-### Data Cleaning & Normalization
-- Handles missing values  
-- Standardizes naming conventions  
-- Merges Ads + GA4 datasets  
+## How to Run
 
-### KPI Engine
-Automatically calculates:
-- ROAS
-- ROI
-- CPA
-- CTR
-- Conversion Rate
-- Profit
-- Country & Product level performance
-
-###  Machine Learning Models
-- Predict future ROAS  
-- Predict CPA  
-- Scikit-learn + XGBoost  
-
-###  Budget Optimization
-Linear Programming model using **PuLP**:
-- Allocates budget across channels  
-- Maximizes revenue or conversions  
-
-### Final Output
-Delivered as **Power BI dashboard** (.pbix)
-
----
-
-# ## 5. How to Run the Project
-
-### **1. Install required libraries**
 ```bash
 pip install -r requirements.txt
+python src/marketing_decision_intelligence.py
 ```
 
-### **2. Set environment variables**
-You should export your API keys if using real APIs:
-
-```bash
-export GA4_API_KEY=your_ga4_key
-export ADS_CLIENT_ID=your_client_id
-export ADS_CLIENT_SECRET=your_secret
-```
-
-### **3. Run the full ETL pipeline**
-```bash
-cd data/scripts
-python main_etl.py
-```
-
-### **4. Outputs will be generated here:**
-```
-data/processed/
-```
-
-Main output file for Power BI:
-```
-data/processed/marketing_ga4_merged_with_kpis.csv
-```
-
----
-
-# ## 6. Power BI Dashboard
-
-After running the pipeline, open the dashboard:
-
-```
-data/powerbi/marketing_dashboard.pbix
-```
-
-This Power BI file automatically reads:
-
-- **Merged marketing dataset**
-- **KPI-enriched tables**
-- **Product & Country performance**
-- **Budget simulation results**
-
----
-
-# ## 7. Outputs Included
-
-### **Processed datasets**
-- marketing_ga4_merged_with_kpis.csv  
-- product_country_performance.csv  
-- what_if_budget_simulation.csv  
-- lp_budget_recommendations.csv  
-
-### **Visuals**
-- Marketing ETL Pipeline Diagram  
-- ETL Architecture Diagram  
-
----
-
-# ## 8. Contact
-
-**Özlem Tonbul**  
-Digital Marketing & Data Analyst  
-
-GitHub: https://github.com/ozlemtonbul  
-Email: ozlemtonbul34@gmail.com  
-
----
+## Author
+Ozlem Tonbul
