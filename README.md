@@ -92,12 +92,6 @@ The pipeline is designed to feed a business intelligence dashboard that visualiz
 - Business rule-based decision systems
 - Power BI
 
-## Output Files
-- marketing_analysis.csv → Cleaned and structured dataset
-- marketing_segmentation.csv → Customer segmentation output
-- marketing_recommendations.csv → Final decision outputs
-- marketing_campaign_summary.csv → Campaign-level insights
-
 ## How to Run
 
 ```bash
