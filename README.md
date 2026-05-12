@@ -2,7 +2,7 @@
 
 | Dashboard | Link |
 |--|--|
-| Marketing Decision Intelligence · ETL Pipeline · What-If Simulation Dashboard | View Dashboard → [View Dashboard →](https://ozlemtonbul.github.io/dashboards/marketing_dashboard.html)|
+| Marketing Decision Intelligence · ETL Pipeline · What-If Simulation Dashboard | View Dashboard → [View Dashboard → https://ozlemtonbul.com/dashboards/marketing_dashboard.html] 
 
 # Marketing Decision Intelligence Pipeline
 
